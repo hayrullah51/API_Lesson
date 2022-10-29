@@ -46,7 +46,7 @@ public class Get04 extends JsonplaceholderBaseUrl {
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("hayrullah",hasSize(200),"title",hasItem("quis eius est sint explicabo"),
+                .body("id",hasSize(200),"title",hasItem("quis eius est sint explicabo"),
                         "userId",hasItems(2,7,9));
 
     }
