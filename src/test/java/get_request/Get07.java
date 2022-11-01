@@ -63,11 +63,19 @@ Then
         //4)Print all titles whose ids are less than 5 ==> ıd si 5 den kucuk olan tum basliklari yazdirin
         //      Assert that "delectus aut autem" is one of the titles whose id is less than 5 ==> id si 5 den kucuk olan datalarin birinin
         //      basliginin "delectus aut autem" icerdigini dogrulayin
+
        List<String> idKucujTittle = jsonPath.getList("findAll{it.id<5}.title");
         System.out.println(idKucujTittle);
         assertTrue(idKucujTittle.contains("delectus aut autem"));
         assertTrue(idKucujTittle.stream().anyMatch(t -> t.equals("delectus aut autem")));
 
+
+
+        List<String> usertype = jsonPath.getList("products.category.usertype.usertype");
+
+        assertEquals(12, usertype.stream().filter(t -> t.equals("Women")).count());
+        assertEquals(9, usertype.stream().filter(t -> t.equals("Men")).count());
+        assertEquals(13, usertype.stream().filter(t -> t.equals("Kids")).count());
 
 
 
