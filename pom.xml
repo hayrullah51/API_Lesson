@@ -46,6 +46,15 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>AsposeJavaAPI</id>
+            <name>Aspose Java API</name>
+            <url>https://repository.aspose.com/repo/</url>
+        </repository>
+    </repositories>
 
 </project>
