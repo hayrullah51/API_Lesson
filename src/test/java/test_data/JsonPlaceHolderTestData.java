@@ -18,8 +18,23 @@ public class JsonPlaceHolderTestData {
             expextedDataMap.put("completed", completed);
         }
 
-
-
         return expextedDataMap;
     }
+
+    public String expectedDataInString(int userId, String title, boolean completed ){
+        String expectedData = "{\n" +
+                "                 \"userId\": "+userId+",\n" +
+                "                 \"title\": \""+title+"\",\n" +
+                "                 \"completed\": "+completed+"\n" +
+                "               }";
+
+        return expectedData;
+    }
 }
+/*
+{
+                 "userId": 55,
+                 "title": "Tidy your room",
+                 "completed": false
+               }
+ */
