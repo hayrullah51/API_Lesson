@@ -4,8 +4,8 @@ import base_url.AutomationExercise;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.json.JSONObject;
 import org.junit.Test;
+
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class Work01 extends AutomationExercise {
         And
             Status Line should be HTTP/1.1 200 OK
         And
-             Number of H&M brands must be equal to Polo(H&M marka sayısı Polo marka sayısına eşit olmalı)
+             Number of H&M brands must be equal to Polo (H&M marka sayısı Polo marka sayısına eşit olmalı)
 */
 
     @Test
@@ -41,6 +41,11 @@ public class Work01 extends AutomationExercise {
         Response response = given().spec(spec).when().contentType(ContentType.JSON).get("/{first}/{second}");
         JsonPath jsonPath = response.jsonPath();
         jsonPath.prettyPrint();
+       List<String> poloList = jsonPath.getList("brands.findAll{it.brand=='Polo'}.brand");
+        System.out.println("Polo list : " + poloList);
+        int polo = poloList.size();
+
+        List<String> hAndMList = jsonPath.getList("brands.findAll{it.brand=='H&M'}.brand");
 
 
 
@@ -50,6 +55,7 @@ public class Work01 extends AutomationExercise {
         assertEquals(200,response.statusCode());
         assertEquals("text/html; charset=utf-8",response.contentType());
         assertEquals("HTTP/1.1 200 OK",response.statusLine());
+        assertEquals(poloList.size(),hAndMList.size());
 
 
 
